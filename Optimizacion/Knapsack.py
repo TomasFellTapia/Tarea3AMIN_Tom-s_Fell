@@ -2,7 +2,7 @@ import sys
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import time 
-
+from Funciones.Funciones import
 if len(sys.argv)== 5:
     sem = int(sys.argv[1])
 
