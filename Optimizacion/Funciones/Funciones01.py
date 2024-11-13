@@ -8,6 +8,10 @@ def valores(archivo):
     z = int(df[0][3].split()[1])
     df.drop(df.index[0:5],axis=0,inplace=True)
     df.drop(df.tail(1).index,axis=0,inplace=True)
-    df = df[0].str.split
-    print ("N= ",n,"; C= ",c,"; Z= ",z)
+    df = df[0].str.split(",",expand=True)
+    df = df.astype('int64').to_numpy()
     print(df)
+   
+    
+    return n,c,z
+
