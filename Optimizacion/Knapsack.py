@@ -12,17 +12,19 @@ if len(sys.argv)== 6:
     prue = int(sys.argv[4])
     tau = float(sys.argv[5])
     nom = "Entradas"+sep+nom+".csv"
-    n,c,z = valores(nom)
+    n,c,z,mdatos = valores(nom)
     for i in range(prue):
         np.random.seed(sem)
-        print(n," ",type(n),"  ",c,"  ",type(c)," ",z," ",type(z),".")
-       
-        print("Semilla: ",sem," ",type(sem))
-
         vectini = np.random.randint(2,size=n)
         valores(nom)
         print (vectini)
         sem +=1
+        
+        vecprob=vectorprobabilidades(tau*-1,n)
+        print(vecprob)
+        for j in range(numit):
+            vecprop=vectorproporcion(vecprob,(n-j)) 
+            print(vecprop)
 
 else: 
     print("Error en el ingreso de datos")
