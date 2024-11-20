@@ -10,9 +10,6 @@ def valores(archivo):
     df.drop(df.tail(1).index,axis=0,inplace=True)
     df = df[0].str.split(",",expand=True)
     df = df.astype('int32').to_numpy()
-    print(df)
-   
-    
     return n,c,z,df
 
 def vectorprobabilidades(tau,n,dtype=float):
@@ -20,13 +17,19 @@ def vectorprobabilidades(tau,n,dtype=float):
     for i in range (n):
         vec[i]=(i+1)**tau
     return vec
+
 def vectorproporcion(vecprob,n):
     vecp = np.arange(0,n,dtype=float)
     total = vecprob.sum()
     for i in range(n):
         vecp[i]=vecprob[i]/total
     return vecp
-def calcularcosto(vecs,mdatos,n):
+
+def calcularcostos(vecs,mdatos,n):
+    
+    pes = (mdatos[:,2]*vecs).sum()
+    return pes
+
+def calcularvalor(vecs,mdatos,n):
     val = (mdatos[:,1]*vecs).sum()
-    pes = (mdatos[:,2]-vecs).sum()
-    return val,pes
+    return val
