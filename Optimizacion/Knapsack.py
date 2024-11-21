@@ -16,20 +16,36 @@ if len(sys.argv)== 6:
     n,c,z,mdatos = valores(nom)
     for i in range(prue):
         np.random.seed(sem)
-        vectini = np.random.randint(2,size=n)
-        print("antes del cambio\n",vectini)
-        aux = vectini*mdatos[:,2].transpose()
-        ind=np.argmax(np.cumsum(aux)>c)
-        vectini[ind:]=0
-        print("Despues del cambio\n",vectini)
-        print("Coste Maximo: ",c,"\nCoste de la Mochila: ",calcularcostos(vectini,mdatos,n))
+        vectini = np.random.randint(0,2,n)
         
+        while calcularcostos(vectini,mdatos,n)>c:
+            aux = vectini*mdatos[:,2].transpose()
+            ind = np.argmax(aux)
+            vectini[ind]=0
+        msol = vectini
+        vefitnes = calcularfitness(mdatos,n)
+        
+        vefi01 = np.sort(vefitnes)
+        vefi02 = np.argsort(vefitnes)
+        vectra = np.random.randint(0,2,n)
+        
+
         
         vecprob=vectorprobabilidades(tau*-1,n)
-        print(vecprob)
+        pos = n-1
         for j in range(numit):
+            
             vecprop=vectorproporcion(vecprob,(n-j)) 
-            print(vecprop)
+            raux = np.random.rand()
+            print("Numero Aleatoreo: ",raux)
+            for jj in range(n):
+                print(vecprop[jj])
+                if raux<=vecprop[jj]:
+                    print("\n----En este lugar estamos----\n")
+                    ter = vefi02[jj]
+                    print(ter)
+
+
             
         sem +=1
 

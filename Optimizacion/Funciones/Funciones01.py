@@ -33,3 +33,7 @@ def calcularcostos(vecs,mdatos,n):
 def calcularvalor(vecs,mdatos,n):
     val = (mdatos[:,1]*vecs).sum()
     return val
+def calcularfitness(mdatos,n):
+    vecf = np.arange(0,n,dtype=float)
+    vecf = (mdatos[:,1]/mdatos[:,2]).transpose()
+    return vecf
