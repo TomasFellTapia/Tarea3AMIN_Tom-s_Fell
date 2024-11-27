@@ -34,7 +34,7 @@ if len(sys.argv)== 6:
         vecprob=vectorprobabilidades(tau*-1,n)
         pos = n-1
         for j in range(numit):
-            
+           
             vecprop=vectorproporcion(vecprob,(n-j)) 
             raux = np.random.rand()
             print("Numero Aleatoreo: ",raux)
@@ -44,6 +44,19 @@ if len(sys.argv)== 6:
                     print("\n----En este lugar estamos----\n")
                     ter = vefi02[jj]
                     print(ter)
+                    vectra[ter]=1-vectra[ter]
+                if(calcularcostos(vectra,mdatos,n)<c):
+                    while(calcularcostos(vectra,mdatos,n)<c):
+                        nit = (vefitnes[~vectra.astype(bool)]).size
+                        ruleta = vecprop[:nit]
+
+
+                else:
+                    while(calcularcostos(vectra,mdatos,n)>c):
+                        nit = (vefitnes[vectra.astype(bool)]).size
+
+
+                    
 
 
             
