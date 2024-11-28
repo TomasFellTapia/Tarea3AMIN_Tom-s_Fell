@@ -49,11 +49,29 @@ if len(sys.argv)== 6:
                     while(calcularcostos(vectra,mdatos,n)<c):
                         nit = (vefitnes[~vectra.astype(bool)]).size
                         ruleta = vecprop[:nit]
+                        vecaux = vefi02[nit:][::-1]
+                        
+                        raux2 = np.random.rand()
+                        for o in range (nit):
+                            if raux2<=ruleta[o]:
+                                a = vecaux[o]
+                                vectra[a]=1
+                        if(calcularcostos(vectra,mdatos,n)<=c):
+                            
 
 
-                else:
+
+                if(calcularcostos(vectra,mdatos,n)>c):
                     while(calcularcostos(vectra,mdatos,n)>c):
                         nit = (vefitnes[vectra.astype(bool)]).size
+                        ruleta = vecprop[:nit]
+                        vecaux = vefi02[:nit]
+                        raux2 = np.random.rand()
+                        for o in range (nit):
+                            if raux2<=ruleta[o]:
+                                a = vecaux[o]
+                                vectra[a]=0
+                
 
 
                     
